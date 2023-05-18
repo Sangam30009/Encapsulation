@@ -1,0 +1,45 @@
+'''Encapsulation is one of the key principles of object-oriented programming (OOP) and is used to hide the internal details of an object and provide a controlled interface for
+interacting with the object's data and behavior. It helps in achieving data abstraction and data protection. '''
+
+
+
+
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self.__account_number = account_number
+        self.__balance = balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Insufficient funds")
+
+    def get_balance(self):
+        return self.__balance
+
+    def get_account_number(self):
+        return self.__account_number
+
+# Create a bank account object
+account = BankAccount("123456789", 1000)
+
+# Deposit funds
+account.deposit(500)
+
+# Withdraw funds
+account.withdraw(200)
+
+# Get account balance and number
+balance = account.get_balance()
+account_number = account.get_account_number()
+
+print("Account number:", account_number)
+print("Current balance:", balance)
+
+
+"In the example usage, attempting to directly access __account_number (e.g., account.__account_number) will raise an AttributeError because it is a private attribute. Instead,
+the account number and balance are retrieved using the getter methods, ensuring controlled access to the internal data.
